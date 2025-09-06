@@ -127,8 +127,8 @@ addopts = [
     "--cov=core",
     "--cov=business",
     "--cov-report=term-missing",
-    "--cov-report=html",
-    "--cov-report=xml",
+    "--cov-report=html:coverage_reports/htmlcov",
+    "--cov-report=xml:coverage_reports/coverage.xml",
 ]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
@@ -143,6 +143,13 @@ omit = [
     "*/__init__.py",
     "*/conftest.py",
 ]
+data_file = "coverage_reports/.coverage"
+
+[tool.coverage.html]
+directory = "coverage_reports/htmlcov"
+
+[tool.coverage.xml]
+output = "coverage_reports/coverage.xml"
 
 [tool.coverage.report]
 exclude_lines = [

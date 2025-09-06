@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Tests](https://img.shields.io/badge/tests-pytest-orange)](https://pytest.org)
-[![Coverage](https://img.shields.io/badge/coverage-21%25-yellow)](htmlcov/index.html)
+[![Coverage](https://img.shields.io/badge/coverage-21%25-yellow)](coverage_reports/htmlcov/index.html)
 [![Socket.IO](https://img.shields.io/badge/Socket.IO-4.x-white?logo=socket.io)](https://python-socketio.readthedocs.io/)
 
 A professional Python library for building publish-subscribe messaging systems tailored for trading applications. This library provides a robust, asynchronous messaging

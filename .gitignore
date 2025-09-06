@@ -53,6 +53,10 @@ pytest_cache/
 test-results.xml
 pytest.ini.tmp
 
+# Coverage reports directory
+coverage_reports/
+coverage_reports/*
+
 # Translations
 *.mo
 *.pot

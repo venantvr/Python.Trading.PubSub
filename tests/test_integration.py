@@ -82,6 +82,7 @@ class TestPubSubIntegration:
         with patch('core.pubsub_client.socketio.Client') as mock_client_class:
             mock_clients = []
 
+            # noinspection PyUnusedLocal
             def create_mock_client(*args, **kwargs):
                 mock = MagicMock()
                 callbacks = {}
