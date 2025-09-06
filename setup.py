@@ -21,11 +21,11 @@ setup(
     description='A professional Python library for building publish-subscribe messaging systems tailored for trading applications',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/yourusername/python-trading-pubsub',
+    url='https://github.com/venantvr/python-trading-pubsub',
     project_urls={
-        'Bug Tracker': 'https://github.com/yourusername/python-trading-pubsub/issues',
+        'Bug Tracker': 'https://github.com/venantvr/python-trading-pubsub/issues',
         'Documentation': 'https://python-trading-pubsub.readthedocs.io',
-        'Source Code': 'https://github.com/yourusername/python-trading-pubsub',
+        'Source Code': 'https://github.com/venantvr/python-trading-pubsub',
     },
     packages=find_packages(exclude=['tests*', 'docs*', 'examples*']),
     classifiers=[

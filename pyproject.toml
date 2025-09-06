@@ -61,11 +61,11 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/python-trading-pubsub"
+Homepage = "https://github.com/venantvr/python-trading-pubsub"
 Documentation = "https://python-trading-pubsub.readthedocs.io"
-Repository = "https://github.com/yourusername/python-trading-pubsub.git"
-"Bug Tracker" = "https://github.com/yourusername/python-trading-pubsub/issues"
-Changelog = "https://github.com/yourusername/python-trading-pubsub/blob/main/CHANGELOG.md"
+Repository = "https://github.com/venantvr/python-trading-pubsub.git"
+"Bug Tracker" = "https://github.com/venantvr/python-trading-pubsub/issues"
+Changelog = "https://github.com/venantvr/python-trading-pubsub/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
 packages = ["core", "business", "business.tools", "business.enums", "events"]
