@@ -11,8 +11,8 @@ By participating in this project, you agree to abide by our Code of Conduct. Ple
 1. Fork the repository on GitHub
 2. Clone your fork locally:
    ```bash
-   git clone https://github.com/venantvr/python-trading-pubsub.git
-   cd python-trading-pubsub
+   git clone https://github.com/venantvr/Python.Trading.PubSub.git
+   cd Python.Trading.PubSub
    ```
 3. Create a virtual environment:
    ```bash
@@ -122,14 +122,15 @@ Example test:
 
 ```python
 def test_message_creation_with_auto_id():
-    """Test creating a message with automatic ID generation."""
-    msg = PubSubMessage.new(
-        topic="test_topic",
-        message={"data": "test"},
-        producer="test_producer"
-    )
-    assert msg.topic == "test_topic"
-    assert msg.message_id is not None
+   """Test creating a message with automatic ID generation."""
+   # noinspection PyUnresolvedReferences
+   msg = PubSubMessage.new(
+      topic="test_topic",
+      message={"data": "test"},
+      producer="test_producer"
+   )
+   assert msg.topic == "test_topic"
+   assert msg.message_id is not None
 ```
 
 ### Running Tests
@@ -166,22 +167,23 @@ pytest --lf
 Use Google-style docstrings:
 
 ```python
+# noinspection PyUnresolvedReferences,PyIncorrectDocstring
 def publish(self, topic: str, message: Any, producer: str, message_id: str) -> None:
-    """
-    Publish a message to a topic.
-    
-    Args:
-        topic: The topic to publish to
-        message: The message content
-        producer: Name of the producer
-        message_id: Unique message identifier
-        
-    Returns:
-        None
-        
-    Raises:
-        ConnectionError: If unable to connect to server
-    """
+   """
+   Publish a message to a topic.
+   
+   Args:
+       topic: The topic to publish to
+       message: The message content
+       producer: Name of the producer
+       message_id: Unique message identifier
+       
+   Returns:
+       None
+       
+   Raises:
+       ConnectionError: If unable to connect to server
+   """
 ```
 
 ## Project Structure

@@ -14,18 +14,18 @@ with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
 setup(
-    name='python-trading-pubsub',
+    name='Python.Trading.PubSub',
     version='0.1.0',
-    author='Python Trading PubSub Contributors',
-    author_email='contact@python-trading-pubsub.io',
+    author='venantvr',
+    author_email='venantvr@gmail.com',
     description='A professional Python library for building publish-subscribe messaging systems tailored for trading applications',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/venantvr/python-trading-pubsub',
+    url='https://github.com/venantvr/Python.Trading.PubSub',
     project_urls={
-        'Bug Tracker': 'https://github.com/venantvr/python-trading-pubsub/issues',
-        'Documentation': 'https://python-trading-pubsub.readthedocs.io',
-        'Source Code': 'https://github.com/venantvr/python-trading-pubsub',
+        'Bug Tracker': 'https://github.com/venantvr/Python.Trading.PubSub/issues',
+        'Documentation': 'https://github.com/venantvr/Python.Trading.PubSub',
+        'Source Code': 'https://github.com/venantvr/Python.Trading.PubSub',
     },
     packages=find_packages(exclude=['tests*', 'docs*', 'examples*']),
     classifiers=[

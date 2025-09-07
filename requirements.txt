@@ -2,6 +2,4 @@ Flask==3.0.0
 flask-socketio==5.3.6
 eventlet~=0.40.3
 python-socketio[client]
-pytest
-pytest-mock
 requests

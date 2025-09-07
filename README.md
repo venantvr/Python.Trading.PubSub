@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Tests](https://img.shields.io/badge/tests-pytest-orange)](https://pytest.org)
-[![Coverage](https://img.shields.io/badge/coverage-21%25-yellow)](coverage_reports/htmlcov/index.html)
+[![Coverage](https://img.shields.io/badge/coverage-21%25-yellow)](https://github.com/venantvr/Python.Trading.PubSub)
 [![Socket.IO](https://img.shields.io/badge/Socket.IO-4.x-white?logo=socket.io)](https://python-socketio.readthedocs.io/)
 
 A professional Python library for building publish-subscribe messaging systems tailored for trading applications. This library provides a robust, asynchronous messaging
@@ -26,15 +26,15 @@ infrastructure using Socket.IO for real-time communication between trading compo
 ### From Source
 
 ```bash
-git clone https://github.com/venantvr/python-trading-pubsub.git
-cd python-trading-pubsub
+git clone https://github.com/venantvr/Python.Trading.PubSub.git
+cd Python.Trading.PubSub
 pip install -e .
 ```
 
 ### Using pip
 
 ```bash
-pip install python-trading-pubsub
+pip install Python.Trading.PubSub
 ```
 
 ## Quick Start
@@ -118,8 +118,8 @@ msg_dict = msg.to_dict()
 
 ```bash
 # Clone the repository
-git clone https://github.com/venantvr/python-trading-pubsub.git
-cd python-trading-pubsub
+git clone https://github.com/venantvr/Python.Trading.PubSub.git
+cd Python.Trading.PubSub
 
 # Create virtual environment
 python -m venv .venv
@@ -301,9 +301,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/venantvr/python-trading-pubsub/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/venantvr/python-trading-pubsub/discussions)
-- **Documentation**: [Full Documentation](https://python-trading-pubsub.readthedocs.io)
+- **Issues**: [GitHub Issues](https://github.com/venantvr/Python.Trading.PubSub/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/venantvr/Python.Trading.PubSub/discussions)
+- **Documentation**: [Full Documentation](https://github.com/venantvr/Python.Trading.PubSub)
 
 ## Acknowledgments
 

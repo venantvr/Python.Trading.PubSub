@@ -2,8 +2,8 @@
 
 PYTHON := python3
 PIP := pip3
-PROJECT_NAME := python-trading-pubsub
-SOURCES := core business
+PROJECT_NAME := Python.Trading.PubSub
+SOURCES := core business events
 
 # Default target
 help:
@@ -28,7 +28,9 @@ install:
 	$(PIP) install .
 
 dev-install:
-	$(PIP) install -e ".[dev,test]"
+	$(PIP) install -r requirements.txt
+	$(PIP) install -r requirements-dev.txt
+	$(PIP) install -e .
 	pre-commit install
 
 # Testing

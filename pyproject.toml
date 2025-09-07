@@ -3,12 +3,12 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "python-trading-pubsub"
+name = "Python.Trading.PubSub"
 version = "0.1.0"
 description = "A professional Python library for building publish-subscribe messaging systems tailored for trading applications"
 readme = "README.md"
 authors = [
-    { name = "Python Trading PubSub Contributors", email = "contact@python-trading-pubsub.io" }
+    { name = "venantvr", email = "venantvr@gmail.com" }
 ]
 license = { text = "MIT" }
 classifiers = [
@@ -61,11 +61,11 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/venantvr/python-trading-pubsub"
-Documentation = "https://python-trading-pubsub.readthedocs.io"
-Repository = "https://github.com/venantvr/python-trading-pubsub.git"
-"Bug Tracker" = "https://github.com/venantvr/python-trading-pubsub/issues"
-Changelog = "https://github.com/venantvr/python-trading-pubsub/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/venantvr/Python.Trading.PubSub"
+Documentation = "https://github.com/venantvr/Python.Trading.PubSub"
+Repository = "https://github.com/venantvr/Python.Trading.PubSub.git"
+"Bug Tracker" = "https://github.com/venantvr/Python.Trading.PubSub/issues"
+Changelog = "https://github.com/venantvr/Python.Trading.PubSub/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
 packages = ["core", "business", "business.tools", "business.enums", "events"]
@@ -102,7 +102,7 @@ line_length = 120
 skip_gitignore = true
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.9"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = false
