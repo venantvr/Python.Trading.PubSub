@@ -83,12 +83,12 @@ repos:
   #       exclude: ^(tests/|setup.py)
 
   # YAML formatting
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v4.0.0-alpha.8
-    hooks:
-      - id: prettier
-        types_or: [yaml, markdown]
-        args: [--prose-wrap=always]
+  # - repo: https://github.com/pre-commit/mirrors-prettier
+  #   rev: v4.0.0-alpha.8
+  #   hooks:
+  #     - id: prettier
+  #       types_or: [yaml, markdown]
+  #       args: [--prose-wrap=always]
 
   # Shell script checks
   - repo: https://github.com/shellcheck-py/shellcheck-py
