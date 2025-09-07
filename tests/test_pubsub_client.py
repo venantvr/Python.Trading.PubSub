@@ -221,9 +221,11 @@ class TestPubSubClient:
         """Test publishing with HTTP error response."""
         with patch("requests.post") as mock_post:
             mock_response = Mock()
-            mock_response.raise_for_status.side_effect = requests.exceptions.HTTPError()
             mock_response.status_code = 500
             mock_response.text = "Internal Server Error"
+            http_error = requests.exceptions.HTTPError()
+            http_error.response = mock_response
+            mock_response.raise_for_status.side_effect = http_error
             mock_post.return_value = mock_response
 
             # Should not raise exception

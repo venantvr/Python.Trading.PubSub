@@ -11,35 +11,35 @@ from business.tools.stream import StreamToLogger
 
 def setup_logging(log_level=logging.INFO, name: str = "runtime"):
     """Set up logging configuration."""
-    # Configuration du logger principal
+    # Main logger configuration
     log = logging.getLogger(name)
     log.setLevel(log_level)
     formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-    # Création de StreamHandler pour la sortie console
+    # Create StreamHandler for console output
     stream_handler = logging.StreamHandler()
     stream_handler.setLevel(log_level)
     stream_handler.setFormatter(formatter)
     log.addHandler(stream_handler)
-    # Rediriger stdout et stderr vers le logger
+    # Redirect stdout and stderr to the logger
     sys.stdout = StreamToLogger(log, logging.INFO)  # type: ignore
     sys.stderr = StreamToLogger(log, logging.ERROR)  # type: ignore
     return log
 
 
-# Function pour récupérer le formatter d'un handler spécifique
+# Function to get the formatter of a specific handler
 def get_formatter(runtime_logger, handler_type):
     for handler in runtime_logger.handlers:
         if isinstance(handler, handler_type):
-            return handler.formatter  # Retourne le formatter du handler trouvé
-    return None  # Retourne None si aucun handler du type spécifié n'est trouvé
+            return handler.formatter  # Return the formatter of the found handler
+    return None  # Return None if no handler of the specified type is found
 
 
 def configure_stream(runtime_logger, log_file: str):
-    # Vérifier que le log_file n'est pas vide
+    # Check that log_file is not empty
     if not log_file:
-        raise ValueError("Le chemin du fichier de log ne peut pas être vide")
+        raise ValueError("Log file path cannot be empty")
 
-    # Créer l'arborescence du répertoire si elle n'existe pas
+    # Create directory tree if it doesn't exist
     log_directory = os.path.dirname(log_file)
     os.makedirs(log_directory, exist_ok=True)
 
@@ -48,25 +48,25 @@ def configure_stream(runtime_logger, log_file: str):
     formatter = get_formatter(runtime, logging.StreamHandler)
     watched_handler.setFormatter(formatter)
 
-    # Supprimer les anciens handlers de fichier pour éviter les doublons
+    # Remove old file handlers to avoid duplicates
     runtime_logger.handlers = [h for h in runtime_logger.handlers if not isinstance(h, WatchedFileHandler)]
 
-    # Ajouter le nouveau handler de fichier
+    # Add the new file handler
     runtime_logger.addHandler(watched_handler)
 
 
 def disable_logger(name: str):
     """
-    Décorateur de class pour désactiver le logger 'runtime' lors de l'instanciation.
+    Class decorator to disable the 'runtime' logger during instantiation.
     """
 
     def decorator(cls: Type[Any]) -> Type[Any]:
         class Wrapper(cls):
             def __init__(self, *args, **kwargs):
-                # Désactiver le logger avant l'initialisation de la class
+                # Disable the logger before class initialization
                 logging.getLogger(name).setLevel(
                     logging.CRITICAL
-                )  # Désactive effectivement le logger en le mettant à CRITICAL
+                )  # Effectively disable the logger by setting it to CRITICAL
                 super().__init__(*args, **kwargs)
 
         return Wrapper
