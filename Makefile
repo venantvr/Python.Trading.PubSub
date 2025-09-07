@@ -1,4 +1,4 @@
-.PHONY: help test clean format check install
+.PHONY: help test clean format lint typecheck check install
 
 PYTHON := $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 PIP := $(if $(wildcard .venv/bin/pip),.venv/bin/pip,pip3)
@@ -9,7 +9,9 @@ help:
 	@echo "Available targets:"
 	@echo "  test      Run tests"
 	@echo "  format    Format code with black and isort"
-	@echo "  check     Run format and tests"
+	@echo "  lint      Run code linting with flake8"
+	@echo "  typecheck Run type checking with mypy"
+	@echo "  check     Run format, lint, typecheck and tests"
 	@echo "  clean     Clean up generated files"
 	@echo "  install   Install dependencies"
 	@echo "  update    Update dependencies"
@@ -23,8 +25,16 @@ format:
 	$(PYTHON) -m black $(SOURCES) tests/
 	$(PYTHON) -m isort $(SOURCES) tests/
 
+# Linting
+lint:
+	$(PYTHON) -m flake8 $(SOURCES) tests/
+
+# Type checking
+typecheck:
+	$(PYTHON) -m mypy $(SOURCES)
+
 # Combined check
-check: format test
+check: format lint typecheck test
 
 # Installation
 install:

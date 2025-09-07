@@ -37,12 +37,6 @@ cd Python.Trading.PubSub
 pip install -e .
 ```
 
-### Using pip
-
-```bash
-pip install Python.Trading.PubSub
-```
-
 ## Quick Start
 
 ### Basic Usage
@@ -164,7 +158,7 @@ make lint
 # Type checking
 make typecheck
 
-# Run all checks
+# Run all quality checks (format, lint, typecheck, and tests)
 make check
 ```
 
