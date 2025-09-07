@@ -422,7 +422,8 @@ class DatabaseManager(threading.Thread, PubSubClient):
         try:
             cursor = conn.cursor()
             query = """
-                SELECT id, number_of_tokens, expected_sale_price, next_purchase_price, purchase_price, timestamp, status, pool_name, variations
+                SELECT id, number_of_tokens, expected_sale_price, next_purchase_price,
+                       purchase_price, timestamp, status, pool_name, variations
                 FROM positions
                 ORDER BY timestamp ASC
             """
