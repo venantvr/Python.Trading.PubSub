@@ -124,48 +124,12 @@ addopts = [
     "-v",
     "--strict-markers",
     "--tb=short",
-    "--cov=core",
-    "--cov=business",
-    "--cov-report=term-missing",
-    "--cov-report=html:coverage_reports/htmlcov",
-    "--cov-report=xml:coverage_reports/coverage.xml",
 ]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "integration: marks tests as integration tests",
     "unit: marks tests as unit tests",
 ]
-
-[tool.coverage.run]
-source = ["core", "business"]
-omit = [
-    "*/tests/*",
-    "*/__init__.py",
-    "*/conftest.py",
-]
-data_file = "coverage_reports/.coverage"
-
-[tool.coverage.html]
-directory = "coverage_reports/htmlcov"
-
-[tool.coverage.xml]
-output = "coverage_reports/coverage.xml"
-
-[tool.coverage.report]
-exclude_lines = [
-    "pragma: no cover",
-    "def __repr__",
-    "def __str__",
-    "raise AssertionError",
-    "raise NotImplementedError",
-    "if __name__ == .__main__.:",
-    "if TYPE_CHECKING:",
-    "class .*\\bProtocol\\):",
-    "@(abc\\.)?abstractmethod",
-]
-precision = 2
-show_missing = true
-skip_covered = false
 
 [tool.pylint.messages_control]
 disable = [

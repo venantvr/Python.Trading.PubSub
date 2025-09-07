@@ -16,7 +16,7 @@ help:
 
 # Testing
 test:
-	$(PYTHON) -m pytest tests/ -v --tb=short --override-ini="addopts="
+	$(PYTHON) -m pytest tests/ -v --tb=short
 
 # Code formatting
 format:
