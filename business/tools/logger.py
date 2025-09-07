@@ -1,12 +1,16 @@
+"""Logging utilities for the trading application."""
+
 import logging
 import os
 import sys
 from logging.handlers import WatchedFileHandler
+from typing import Any, Type
 
 from business.tools.stream import StreamToLogger
 
 
 def setup_logging(log_level=logging.INFO, name: str = "runtime"):
+    """Set up logging configuration."""
     # Configuration du logger principal
     log = logging.getLogger(name)
     log.setLevel(log_level)
@@ -17,12 +21,12 @@ def setup_logging(log_level=logging.INFO, name: str = "runtime"):
     stream_handler.setFormatter(formatter)
     log.addHandler(stream_handler)
     # Rediriger stdout et stderr vers le logger
-    sys.stdout = StreamToLogger(log, logging.INFO)
-    sys.stderr = StreamToLogger(log, logging.ERROR)
+    sys.stdout = StreamToLogger(log, logging.INFO)  # type: ignore
+    sys.stderr = StreamToLogger(log, logging.ERROR)  # type: ignore
     return log
 
 
-# Fonction pour récupérer le formatter d'un handler spécifique
+# Function pour récupérer le formatter d'un handler spécifique
 def get_formatter(runtime_logger, handler_type):
     for handler in runtime_logger.handlers:
         if isinstance(handler, handler_type):
@@ -53,14 +57,16 @@ def configure_stream(runtime_logger, log_file: str):
 
 def disable_logger(name: str):
     """
-    Décorateur de classe pour désactiver le logger 'runtime' lors de l'instanciation.
+    Décorateur de class pour désactiver le logger 'runtime' lors de l'instanciation.
     """
 
-    def decorator(cls):
+    def decorator(cls: Type[Any]) -> Type[Any]:
         class Wrapper(cls):
             def __init__(self, *args, **kwargs):
-                # Désactiver le logger avant l'initialisation de la classe
-                logging.getLogger(name).setLevel(logging.CRITICAL)  # Désactive effectivement le logger en le mettant à CRITICAL
+                # Désactiver le logger avant l'initialisation de la class
+                logging.getLogger(name).setLevel(
+                    logging.CRITICAL
+                )  # Désactive effectivement le logger en le mettant à CRITICAL
                 super().__init__(*args, **kwargs)
 
         return Wrapper

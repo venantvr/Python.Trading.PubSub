@@ -1,7 +1,9 @@
+"""PubSub client for real-time messaging."""
+
 import logging
 import queue
 import threading
-from typing import List, Dict, Any, Callable
+from typing import Any, Callable, Dict, List
 
 import requests
 import socketio
@@ -14,6 +16,8 @@ logger = logging.getLogger(__name__)
 
 
 class PubSubClient:
+    """Client for publish-subscribe messaging system."""
+
     def __init__(self, url: str, consumer: str, topics: List[str]):
         """
         Initialize the PubSub client.
@@ -26,7 +30,7 @@ class PubSubClient:
         self.consumer = consumer
         self.topics = topics
         self.handlers: Dict[str, Callable[[Any], None]] = {}  # topic → function
-        self.message_queue = queue.Queue()  # Queue for processing messages sequentially
+        self.message_queue: queue.Queue[Dict[str, Any]] = queue.Queue()  # Queue for processing messages sequentially
         self.running = False
 
         # Create Socket.IO client with explicit reconnection settings
@@ -34,7 +38,7 @@ class PubSubClient:
             reconnection=True,
             reconnection_attempts=0,  # Infinite reconnection attempts
             reconnection_delay=2000,  # Delay between reconnection attempts (ms)
-            reconnection_delay_max=10000  # Max delay for reconnection
+            reconnection_delay_max=10000,  # Max delay for reconnection
         )
 
         # Register generic events
@@ -55,10 +59,7 @@ class PubSubClient:
     def on_connect(self) -> None:
         """Handle connection to the server."""
         logger.info(f"[{self.consumer}] Connected to server {self.url}")
-        self.sio.emit("subscribe", {
-            "consumer": self.consumer,
-            "topics": self.topics
-        })
+        self.sio.emit("subscribe", {"consumer": self.consumer, "topics": self.topics})
         if not self.running:
             self.running = True
             threading.Thread(target=self.process_queue, daemon=True).start()
@@ -82,7 +83,10 @@ class PubSubClient:
                 message = data["message"]
                 producer = data.get("producer")
 
-                logger.info(f"[{self.consumer}] Processing message from topic [{topic}]: {message} (from {producer}, ID={message_id})")
+                logger.info(
+                    f"[{self.consumer}] Processing message from topic [{topic}]: {message} "
+                    f"(from {producer}, ID={message_id})"
+                )
 
                 if topic in self.handlers:
                     try:
@@ -93,12 +97,10 @@ class PubSubClient:
                     logger.warning(f"[{self.consumer}] No handler for topic {topic}.")
 
                 # Notify consumption
-                self.sio.emit("consumed", {
-                    "consumer": self.consumer,
-                    "topic": topic,
-                    "message_id": message_id,
-                    "message": message
-                })
+                self.sio.emit(
+                    "consumed",
+                    {"consumer": self.consumer, "topic": topic, "message_id": message_id, "message": message},
+                )
 
                 self.message_queue.task_done()
             except queue.Empty:
@@ -128,7 +130,7 @@ class PubSubClient:
         url = f"{self.url}/publish"
         logger.info(f"[{self.consumer}] Publishing to {topic}: {msg.to_dict()}")
         try:
-            resp = requests.post(url, json=msg.to_dict())
+            resp = requests.post(url, json=msg.to_dict(), timeout=30)
             resp.raise_for_status()  # Raises HTTPError for bad responses (4xx or 5xx)
             logger.info(f"[{self.consumer}] Publish response: {resp.json()}")
         except requests.exceptions.ConnectionError as e:

@@ -1,7 +1,7 @@
 """Integration tests for the PubSub system."""
 
 import time
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import MagicMock, Mock, patch
 
 import pytest
 
@@ -15,7 +15,7 @@ class TestPubSubIntegration:
     @pytest.fixture
     def mock_socketio_server(self):
         """Mock a Socket.IO server for integration testing."""
-        with patch('core.pubsub_client.socketio.Client') as mock_client_class:
+        with patch("core.pubsub_client.socketio.Client") as mock_client_class:
             mock_client = MagicMock()
             mock_client_class.return_value = mock_client
 
@@ -33,11 +33,7 @@ class TestPubSubIntegration:
     @pytest.fixture
     def integration_client(self, mock_socketio_server):
         """Create a client for integration testing."""
-        client = PubSubClient(
-            url="http://localhost:5000",
-            consumer="integration_test",
-            topics=["test_topic"]
-        )
+        client = PubSubClient(url="http://localhost:5000", consumer="integration_test", topics=["test_topic"])
         # Make callbacks accessible for testing
         client._test_callbacks = mock_socketio_server.callbacks
         return client
@@ -61,7 +57,7 @@ class TestPubSubIntegration:
             "topic": "test_topic",
             "message_id": "test_123",
             "message": {"content": "integration test"},
-            "producer": "test_producer"
+            "producer": "test_producer",
         }
 
         if "message" in integration_client._test_callbacks:
@@ -79,7 +75,7 @@ class TestPubSubIntegration:
 
     def test_multiple_clients_different_topics(self):
         """Test multiple clients subscribed to different topics."""
-        with patch('core.pubsub_client.socketio.Client') as mock_client_class:
+        with patch("core.pubsub_client.socketio.Client") as mock_client_class:
             mock_clients = []
 
             # noinspection PyUnusedLocal
@@ -191,12 +187,7 @@ class TestPubSubIntegration:
 
         # Queue multiple messages
         for i in range(5):
-            msg = {
-                "topic": "test_topic",
-                "message_id": f"msg_{i}",
-                "message": {"id": i},
-                "producer": "test"
-            }
+            msg = {"topic": "test_topic", "message_id": f"msg_{i}", "message": {"id": i}, "producer": "test"}
             if "message" in integration_client._test_callbacks:
                 integration_client._test_callbacks["message"](msg)
 
@@ -209,7 +200,7 @@ class TestPubSubIntegration:
 
     def test_publish_and_consume_flow(self, integration_client):
         """Test publishing and consuming in the same client."""
-        with patch('requests.post') as mock_post:
+        with patch("requests.post") as mock_post:
             mock_response = Mock()
             mock_response.json.return_value = {"status": "success"}
             mock_post.return_value = mock_response
@@ -227,20 +218,19 @@ class TestPubSubIntegration:
 
             # Publish a message
             integration_client.publish(
-                topic="test_topic",
-                message={"action": "test"},
-                producer="integration_test",
-                message_id="pub_123"
+                topic="test_topic", message={"action": "test"}, producer="integration_test", message_id="pub_123"
             )
 
             # Simulate receiving the published message back
             if "message" in integration_client._test_callbacks:
-                integration_client._test_callbacks["message"]({
-                    "topic": "test_topic",
-                    "message_id": "pub_123",
-                    "message": {"action": "test"},
-                    "producer": "integration_test"
-                })
+                integration_client._test_callbacks["message"](
+                    {
+                        "topic": "test_topic",
+                        "message_id": "pub_123",
+                        "message": {"action": "test"},
+                        "producer": "integration_test",
+                    }
+                )
 
             # Wait for processing
             time.sleep(0.1)
@@ -270,21 +260,10 @@ class TestPubSubIntegration:
             integration_client._test_callbacks["connect"]()
 
         # Send mix of good and bad messages
-        messages = [
-            {"error": True},
-            {"error": False},
-            {"error": True},
-            {"error": False},
-            {"error": False}
-        ]
+        messages = [{"error": True}, {"error": False}, {"error": True}, {"error": False}, {"error": False}]
 
         for i, msg_content in enumerate(messages):
-            msg = {
-                "topic": "test_topic",
-                "message_id": f"msg_{i}",
-                "message": msg_content,
-                "producer": "test"
-            }
+            msg = {"topic": "test_topic", "message_id": f"msg_{i}", "message": msg_content, "producer": "test"}
             if "message" in integration_client._test_callbacks:
                 integration_client._test_callbacks["message"](msg)
 

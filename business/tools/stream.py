@@ -1,14 +1,17 @@
+"""Stream redirection utilities."""
+
+
 class StreamToLogger:
-    """
-    Classe pour rediriger stdout et stderr vers un logger.
-    """
+    """Class pour rediriger stdout et stderr vers un logger."""
 
     def __init__(self, logger, log_level):
+        """Initialize stream redirection."""
         self.logger = logger
         self.log_level = log_level
         self.in_write = False  # Prévenir les boucles
 
     def write(self, message):
+        """Write message to logger."""
         if message.strip() and not self.in_write:
             try:
                 self.in_write = True  # Empêche la récursion dans write
@@ -17,4 +20,5 @@ class StreamToLogger:
                 self.in_write = False
 
     def flush(self):
-        pass  # Nécessaire pour la compatibilité avec sys.stdout et sys.stderr
+        """Flush method for compatibility."""
+        pass

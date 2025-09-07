@@ -7,18 +7,25 @@
 [![Coverage](https://img.shields.io/badge/coverage-21%25-yellow)](https://github.com/venantvr/Python.Trading.PubSub)
 [![Socket.IO](https://img.shields.io/badge/Socket.IO-4.x-white?logo=socket.io)](https://python-socketio.readthedocs.io/)
 
-A professional Python library for building publish-subscribe messaging systems tailored for trading applications. This library provides a robust, asynchronous messaging
-infrastructure using Socket.IO for real-time communication between trading components.
+A professional Python library for building publish-subscribe messaging systems
+tailored for trading applications. This library provides a robust, asynchronous
+messaging infrastructure using Socket.IO for real-time communication between
+trading components.
 
 ## Features
 
-- **Real-time Communication**: Built on Socket.IO for low-latency message delivery
-- **Topic-based Routing**: Subscribe to specific topics for targeted message consumption
-- **Automatic Reconnection**: Resilient client with automatic reconnection capabilities
-- **Message Queue Processing**: Sequential message processing with built-in queue management
+- **Real-time Communication**: Built on Socket.IO for low-latency message
+  delivery
+- **Topic-based Routing**: Subscribe to specific topics for targeted message
+  consumption
+- **Automatic Reconnection**: Resilient client with automatic reconnection
+  capabilities
+- **Message Queue Processing**: Sequential message processing with built-in
+  queue management
 - **Custom Handler Registration**: Register custom handlers for different topics
 - **HTTP/WebSocket Hybrid**: Publish via HTTP POST, consume via WebSocket
-- **Thread-safe Operations**: Built-in threading support for concurrent operations
+- **Thread-safe Operations**: Built-in threading support for concurrent
+  operations
 - **Comprehensive Logging**: Detailed logging for debugging and monitoring
 
 ## Installation
@@ -182,8 +189,10 @@ PubSubClient(url: str, consumer: str, topics: List[str])
 
 #### Methods
 
-- `register_handler(topic: str, handler_func: Callable)`: Register a message handler
-- `publish(topic: str, message: Any, producer: str, message_id: str)`: Publish a message
+- `register_handler(topic: str, handler_func: Callable)`: Register a message
+  handler
+- `publish(topic: str, message: Any, producer: str, message_id: str)`: Publish a
+  message
 - `start()`: Start the client and connect to server
 
 ### PubSubMessage
@@ -195,7 +204,8 @@ PubSubClient(url: str, consumer: str, topics: List[str])
 PubSubMessage.new(topic: str, message: Any, producer: str, message_id: str = None)
 ```
 
-Creates a new message instance with automatic UUID generation if message_id is not provided.
+Creates a new message instance with automatic UUID generation if message_id is
+not provided.
 
 #### Instance Methods
 
@@ -266,7 +276,7 @@ def aggregate_prices(message):
     symbol = message.get("symbol")
     price = message.get("price")
     prices[symbol] = price
-    
+
     # Publish aggregated data every 10 updates
     if len(prices) >= 10:
         aggregator.publish("aggregated_prices", prices.copy(), "aggregator", None)
@@ -278,7 +288,8 @@ aggregator.start()
 
 ## Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+We welcome contributions! Please see our
+[Contributing Guidelines](CONTRIBUTING.md) for details.
 
 ### Development Process
 
@@ -297,13 +308,17 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/venantvr/Python.Trading.PubSub/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/venantvr/Python.Trading.PubSub/discussions)
-- **Documentation**: [Full Documentation](https://github.com/venantvr/Python.Trading.PubSub)
+- **Issues**:
+  [GitHub Issues](https://github.com/venantvr/Python.Trading.PubSub/issues)
+- **Discussions**:
+  [GitHub Discussions](https://github.com/venantvr/Python.Trading.PubSub/discussions)
+- **Documentation**:
+  [Full Documentation](https://github.com/venantvr/Python.Trading.PubSub)
 
 ## Acknowledgments
 

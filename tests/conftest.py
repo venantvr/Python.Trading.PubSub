@@ -17,7 +17,7 @@ def sample_message_data():
         "topic": "test_topic",
         "message_id": "test_msg_123",
         "message": {"key": "value", "number": 42},
-        "producer": "test_producer"
+        "producer": "test_producer",
     }
 
 
@@ -37,6 +37,7 @@ def mock_server_url():
 def reset_logging():
     """Reset logging configuration for each test."""
     import logging
+
     # Reset logging to avoid interference between tests
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)

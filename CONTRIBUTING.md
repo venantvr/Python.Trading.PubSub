@@ -1,25 +1,32 @@
 # Contributing to Python Trading PubSub
 
-Thank you for your interest in contributing to Python Trading PubSub! We welcome contributions from the community and are grateful for any help you can provide.
+Thank you for your interest in contributing to Python Trading PubSub! We welcome
+contributions from the community and are grateful for any help you can provide.
 
 ## Code of Conduct
 
-By participating in this project, you agree to abide by our Code of Conduct. Please be respectful and professional in all interactions.
+By participating in this project, you agree to abide by our Code of Conduct.
+Please be respectful and professional in all interactions.
 
 ## Getting Started
 
 1. Fork the repository on GitHub
 2. Clone your fork locally:
+
    ```bash
    git clone https://github.com/venantvr/Python.Trading.PubSub.git
    cd Python.Trading.PubSub
    ```
+
 3. Create a virtual environment:
+
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
+
 4. Install development dependencies:
+
    ```bash
    make dev-install
    ```
@@ -171,16 +178,16 @@ Use Google-style docstrings:
 def publish(self, topic: str, message: Any, producer: str, message_id: str) -> None:
    """
    Publish a message to a topic.
-   
+
    Args:
        topic: The topic to publish to
        message: The message content
        producer: Name of the producer
        message_id: Unique message identifier
-       
+
    Returns:
        None
-       
+
    Raises:
        ConnectionError: If unable to connect to server
    """
@@ -188,7 +195,7 @@ def publish(self, topic: str, message: Any, producer: str, message_id: str) -> N
 
 ## Project Structure
 
-```
+```text
 python-trading-pubsub/
 ├── core/               # Core library modules
 │   ├── pubsub_client.py

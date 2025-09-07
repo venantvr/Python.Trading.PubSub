@@ -10,11 +10,7 @@ class TestPubSubMessage:
 
     def test_create_message_with_auto_id(self):
         """Test creating a message with automatic ID generation."""
-        msg = PubSubMessage.new(
-            topic="test_topic",
-            message={"data": "test"},
-            producer="test_producer"
-        )
+        msg = PubSubMessage.new(topic="test_topic", message={"data": "test"}, producer="test_producer")
 
         assert msg.topic == "test_topic"
         assert msg.message == {"data": "test"}
@@ -27,10 +23,7 @@ class TestPubSubMessage:
         """Test creating a message with a custom ID."""
         custom_id = "custom_123"
         msg = PubSubMessage.new(
-            topic="test_topic",
-            message="test message",
-            producer="test_producer",
-            message_id=custom_id
+            topic="test_topic", message="test message", producer="test_producer", message_id=custom_id
         )
 
         assert msg.message_id == custom_id
@@ -38,10 +31,7 @@ class TestPubSubMessage:
     def test_message_to_dict(self):
         """Test converting message to dictionary."""
         msg = PubSubMessage.new(
-            topic="test_topic",
-            message={"key": "value"},
-            producer="test_producer",
-            message_id="test_id"
+            topic="test_topic", message={"key": "value"}, producer="test_producer", message_id="test_id"
         )
 
         result = msg.to_dict()
@@ -61,25 +51,17 @@ class TestPubSubMessage:
             (["list", "of", "items"], list),
             ({"nested": {"dict": "value"}}, dict),
             (True, bool),
-            (None, type(None))
+            (None, type(None)),
         ]
 
         for message_content, expected_type in test_cases:
-            msg = PubSubMessage.new(
-                topic="test",
-                message=message_content,
-                producer="test"
-            )
+            msg = PubSubMessage.new(topic="test", message=message_content, producer="test")
             assert isinstance(msg.message, expected_type)
             assert msg.to_dict()["message"] == message_content
 
     def test_message_immutability_concept(self):
         """Test that message fields are accessible but follow dataclass patterns."""
-        msg = PubSubMessage.new(
-            topic="original_topic",
-            message="original_message",
-            producer="original_producer"
-        )
+        msg = PubSubMessage.new(topic="original_topic", message="original_message", producer="original_producer")
 
         # Dataclass fields are accessible
         assert msg.topic == "original_topic"
@@ -88,38 +70,18 @@ class TestPubSubMessage:
 
     def test_message_equality(self):
         """Test message equality based on all fields."""
-        msg1 = PubSubMessage(
-            topic="test",
-            message_id="same_id",
-            message="same_message",
-            producer="same_producer"
-        )
+        msg1 = PubSubMessage(topic="test", message_id="same_id", message="same_message", producer="same_producer")
 
-        msg2 = PubSubMessage(
-            topic="test",
-            message_id="same_id",
-            message="same_message",
-            producer="same_producer"
-        )
+        msg2 = PubSubMessage(topic="test", message_id="same_id", message="same_message", producer="same_producer")
 
-        msg3 = PubSubMessage(
-            topic="test",
-            message_id="different_id",
-            message="same_message",
-            producer="same_producer"
-        )
+        msg3 = PubSubMessage(topic="test", message_id="different_id", message="same_message", producer="same_producer")
 
         assert msg1 == msg2
         assert msg1 != msg3
 
     def test_message_repr(self):
         """Test string representation of message."""
-        msg = PubSubMessage.new(
-            topic="test_topic",
-            message="test",
-            producer="test_producer",
-            message_id="test_123"
-        )
+        msg = PubSubMessage.new(topic="test_topic", message="test", producer="test_producer", message_id="test_123")
 
         repr_str = repr(msg)
         assert "PubSubMessage" in repr_str

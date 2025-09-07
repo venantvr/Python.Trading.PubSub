@@ -1,7 +1,11 @@
+"""Event type definitions for the trading system."""
+
 from enum import Enum
 
 
 class EventType(Enum):
+    """Enumeration of event types used in the trading system."""
+
     # Événements de Commandes (généralement publiés par l'Orchestrator ou des services)
     COMMAND_ACTIONS_REGISTERED = "command_actions_registered"
 
