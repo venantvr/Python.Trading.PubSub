@@ -76,7 +76,6 @@ make format      # Auto-format code
 make lint        # Run linters
 make typecheck   # Run type checking
 make test        # Run tests
-make coverage    # Run tests with coverage report
 ```
 
 ### 4. Commit Your Changes
@@ -145,9 +144,6 @@ def test_message_creation_with_auto_id():
 ```bash
 # Run all tests
 make test
-
-# Run with coverage
-make coverage
 
 # Run specific test file
 pytest tests/test_pubsub_client.py

@@ -4,7 +4,6 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Tests](https://img.shields.io/badge/tests-pytest-orange)](https://pytest.org)
-[![Coverage](https://img.shields.io/badge/coverage-21%25-yellow)](https://github.com/venantvr/Python.Trading.PubSub)
 [![Socket.IO](https://img.shields.io/badge/Socket.IO-4.x-white?logo=socket.io)](https://python-socketio.readthedocs.io/)
 
 A professional Python library for building publish-subscribe messaging systems
@@ -145,9 +144,6 @@ pre-commit install
 ```bash
 # Run all tests
 make test
-
-# Run with coverage
-make coverage
 
 # Run specific test file
 pytest tests/test_pubsub_client.py
@@ -304,7 +300,7 @@ We welcome contributions! Please see our
 - Follow PEP 8 guidelines
 - Use type hints for all function signatures
 - Write docstrings for all public methods
-- Maintain test coverage above 80%
+- Write comprehensive tests for all features
 
 ## License
 
