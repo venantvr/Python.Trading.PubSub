@@ -2,11 +2,8 @@
 
 import logging
 import os
-import sys
 from logging.handlers import WatchedFileHandler
 from typing import Any, Type
-
-from business.tools.stream import StreamToLogger
 
 
 def setup_logging(log_level=logging.INFO, name: str = "runtime"):
@@ -20,9 +17,6 @@ def setup_logging(log_level=logging.INFO, name: str = "runtime"):
     stream_handler.setLevel(log_level)
     stream_handler.setFormatter(formatter)
     log.addHandler(stream_handler)
-    # Redirect stdout and stderr to the logger
-    sys.stdout = StreamToLogger(log, logging.INFO)  # type: ignore
-    sys.stderr = StreamToLogger(log, logging.ERROR)  # type: ignore
     return log
 
 
