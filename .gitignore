@@ -197,3 +197,5 @@ temp/
 package-lock.json
 yarn.lock
 requirements-freeze.txt
+/build/
+/dist/
