@@ -1,3 +1,58 @@
+Metadata-Version: 2.4
+Name: python_trading_pubsub
+Version: 0.1.0
+Summary: A professional Python library for building publish-subscribe messaging systems tailored for trading applications
+Author-email: venantvr <venantvr@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/venantvr/Python.Trading.PubSub
+Project-URL: Documentation, https://github.com/venantvr/Python.Trading.PubSub
+Project-URL: Repository, https://github.com/venantvr/Python.Trading.PubSub.git
+Project-URL: Bug Tracker, https://github.com/venantvr/Python.Trading.PubSub/issues
+Project-URL: Changelog, https://github.com/venantvr/Python.Trading.PubSub/blob/main/CHANGELOG.md
+Keywords: pubsub,messaging,trading,socketio,realtime,async,websocket
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Office/Business :: Financial :: Investment
+Classifier: Topic :: System :: Networking
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Operating System :: OS Independent
+Classifier: Framework :: Flask
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: Flask==3.0.0
+Requires-Dist: flask-socketio==5.3.6
+Requires-Dist: eventlet~=0.40.3
+Requires-Dist: python-socketio[client]
+Requires-Dist: requests
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.0.0; extra == "dev"
+Requires-Dist: pytest-mock>=3.10.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.21.0; extra == "dev"
+Requires-Dist: black>=23.0.0; extra == "dev"
+Requires-Dist: flake8>=6.0.0; extra == "dev"
+Requires-Dist: mypy>=1.0.0; extra == "dev"
+Requires-Dist: isort>=5.12.0; extra == "dev"
+Requires-Dist: pre-commit>=3.0.0; extra == "dev"
+Requires-Dist: sphinx>=6.0.0; extra == "dev"
+Requires-Dist: sphinx-rtd-theme>=1.2.0; extra == "dev"
+Provides-Extra: test
+Requires-Dist: pytest>=7.0.0; extra == "test"
+Requires-Dist: pytest-cov>=4.0.0; extra == "test"
+Requires-Dist: pytest-mock>=3.10.0; extra == "test"
+Requires-Dist: pytest-asyncio>=0.21.0; extra == "test"
+Requires-Dist: requests-mock>=1.10.0; extra == "test"
+Dynamic: license-file
+
 # Python Trading PubSub
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)

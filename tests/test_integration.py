@@ -5,7 +5,7 @@ from unittest.mock import MagicMock, Mock, patch
 
 import pytest
 
-from core.pubsub_client import PubSubClient
+from src.python_trading_pubsub.core.pubsub_client import PubSubClient
 
 
 # noinspection PyUnresolvedReferences,PyShadowingNames
@@ -15,7 +15,7 @@ class TestPubSubIntegration:
     @pytest.fixture
     def mock_socketio_server(self):
         """Mock a Socket.IO server for integration testing."""
-        with patch("core.pubsub_client.socketio.Client") as mock_client_class:
+        with patch("src.python_trading_pubsub.core.pubsub_client.socketio.Client") as mock_client_class:
             mock_client = MagicMock()
             mock_client_class.return_value = mock_client
 
@@ -75,7 +75,7 @@ class TestPubSubIntegration:
 
     def test_multiple_clients_different_topics(self):
         """Test multiple clients subscribed to different topics."""
-        with patch("core.pubsub_client.socketio.Client") as mock_client_class:
+        with patch("src.python_trading_pubsub.core.pubsub_client.socketio.Client") as mock_client_class:
             mock_clients = []
 
             # noinspection PyUnusedLocal

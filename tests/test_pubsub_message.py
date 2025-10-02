@@ -2,7 +2,7 @@
 
 from uuid import UUID
 
-from core.pubsub_message import PubSubMessage
+from src.python_trading_pubsub.core.pubsub_message import PubSubMessage
 
 
 class TestPubSubMessage:

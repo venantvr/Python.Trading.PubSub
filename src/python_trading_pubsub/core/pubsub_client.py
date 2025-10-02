@@ -8,7 +8,7 @@ from typing import Any, Callable, Dict, List
 import requests
 import socketio
 
-from core.pubsub_message import PubSubMessage
+from src.python_trading_pubsub.core.pubsub_message import PubSubMessage
 
 # Configure logging for debugging
 logging.basicConfig(level=logging.INFO)

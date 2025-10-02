@@ -8,7 +8,7 @@ from unittest.mock import MagicMock, Mock, patch
 import pytest
 import requests
 
-from core.pubsub_client import PubSubClient
+from src.python_trading_pubsub.core.pubsub_client import PubSubClient
 
 
 class TestPubSubClient:
@@ -17,19 +17,19 @@ class TestPubSubClient:
     @pytest.fixture
     def mock_sio(self):
         """Create a mock Socket.IO client."""
-        with patch("core.pubsub_client.socketio.Client") as mock:
+        with patch("src.python_trading_pubsub.core.pubsub_client.socketio.Client") as mock:
             yield mock.return_value
 
     @pytest.fixture
     def client(self, mock_sio):
         """Create a PubSubClient instance with mocked Socket.IO."""
-        with patch("core.pubsub_client.socketio.Client", return_value=mock_sio):
+        with patch("src.python_trading_pubsub.core.pubsub_client.socketio.Client", return_value=mock_sio):
             client = PubSubClient(url="http://localhost:5000", consumer="test_consumer", topics=["topic1", "topic2"])
             return client
 
     def test_client_initialization(self):
         """Test client initialization with correct parameters."""
-        with patch("core.pubsub_client.socketio.Client") as mock_sio_class:
+        with patch("src.python_trading_pubsub.core.pubsub_client.socketio.Client") as mock_sio_class:
             mock_sio = MagicMock()
             mock_sio_class.return_value = mock_sio
 
@@ -243,7 +243,7 @@ class TestPubSubClient:
 
     def test_url_trailing_slash_removal(self):
         """Test that trailing slash is removed from URL."""
-        with patch("core.pubsub_client.socketio.Client"):
+        with patch("src.python_trading_pubsub.core.pubsub_client.socketio.Client"):
             client = PubSubClient(url="http://localhost:5000///", consumer="test", topics=[])
             assert client.url == "http://localhost:5000"
 

@@ -1,16 +1,18 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = [
+    "setuptools>=61.0",
+    "wheel",
+]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Python.Trading.PubSub"
+name = "python_trading_pubsub"
 version = "0.1.0"
 description = "A professional Python library for building publish-subscribe messaging systems tailored for trading applications"
 readme = "README.md"
 authors = [
-    { name = "venantvr", email = "venantvr@gmail.com" }
+    { name = "venantvr", email = "venantvr@gmail.com" },
 ]
-license = { text = "MIT" }
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -28,7 +30,15 @@ classifiers = [
     "Operating System :: OS Independent",
     "Framework :: Flask",
 ]
-keywords = ["pubsub", "messaging", "trading", "socketio", "realtime", "async", "websocket"]
+keywords = [
+    "pubsub",
+    "messaging",
+    "trading",
+    "socketio",
+    "realtime",
+    "async",
+    "websocket",
+]
 requires-python = ">=3.8"
 dependencies = [
     "Flask==3.0.0",
@@ -37,6 +47,9 @@ dependencies = [
     "python-socketio[client]",
     "requests",
 ]
+
+[project.license]
+text = "MIT"
 
 [project.optional-dependencies]
 dev = [
@@ -68,32 +81,37 @@ Repository = "https://github.com/venantvr/Python.Trading.PubSub.git"
 Changelog = "https://github.com/venantvr/Python.Trading.PubSub/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
-packages = ["core", "business", "business.tools", "business.enums"]
+packages = [
+    "python_trading_pubsub",
+    "python_trading_pubsub.core",
+    "python_trading_pubsub.business",
+    "python_trading_pubsub.business.tools",
+    "python_trading_pubsub.business.enums",
+]
 include-package-data = true
 
 [tool.setuptools.package-data]
-"*" = ["*.txt", "*.md", "*.yml", "*.yaml"]
+"*" = [
+    "*.txt",
+    "*.md",
+    "*.yml",
+    "*.yaml",
+]
 
 [tool.setuptools.package-dir]
-"" = "."
+"" = "src"
 
 [tool.black]
 line-length = 120
-target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
-include = '\.pyi?$'
-extend-exclude = '''
-/(
-  # directories
-  \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | build
-  | dist
-)/
-'''
+target-version = [
+    "py38",
+    "py39",
+    "py310",
+    "py311",
+    "py312",
+]
+include = "\\.pyi?$"
+extend-exclude = "/(\n  # directories\n  \\.eggs\n  | \\.git\n  | \\.hg\n  | \\.mypy_cache\n  | \\.tox\n  | \\.venv\n  | build\n  | dist\n)/\n"
 
 [tool.isort]
 profile = "black"
@@ -120,10 +138,19 @@ check_untyped_defs = true
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-testpaths = ["tests"]
-python_files = ["test_*.py", "*_test.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
+testpaths = [
+    "tests",
+]
+python_files = [
+    "test_*.py",
+    "*_test.py",
+]
+python_classes = [
+    "Test*",
+]
+python_functions = [
+    "test_*",
+]
 addopts = [
     "-v",
     "--strict-markers",
@@ -137,29 +164,96 @@ markers = [
 
 [tool.pylint.messages_control]
 disable = [
-    "C0103", # Invalid name
-    "C0114", # Missing module docstring
-    "C0115", # Missing class docstring
-    "C0116", # Missing function docstring
-    "R0903", # Too few public methods
-    "R0913", # Too many arguments
-    "W0212", # Protected access
+    "C0103",
+    "C0114",
+    "C0115",
+    "C0116",
+    "R0903",
+    "R0913",
+    "W0212",
 ]
 
 [tool.pylint.format]
 max-line-length = 120
 
 [tool.pylint.basic]
-good-names = ["i", "j", "k", "ex", "Run", "_", "id", "ip"]
+good-names = [
+    "i",
+    "j",
+    "k",
+    "ex",
+    "Run",
+    "_",
+    "id",
+    "ip",
+]
 
 [tool.bandit]
-exclude_dirs = ["tests", ".venv", "build", "dist"]
-skips = ["B101"]  # Skip assert_used test
+exclude_dirs = [
+    "tests",
+    ".venv",
+    "build",
+    "dist",
+]
+skips = [
+    "B101",
+]
 
 [tool.flake8]
 max-line-length = 120
-extend-ignore = ["E203", "W503", "E501", "D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107", "D200", "D201", "D202", "D205", "D208", "D209", "D210", "D211", "D212", "D213", "D214", "D215", "D300", "D301", "D400", "D401", "D402", "D403", "D404", "D405", "D406", "D407", "D408", "D409", "D410", "D411", "D412", "D413", "D414", "D415", "D416", "D417"]
-exclude = [".git", "__pycache__", "build", "dist", ".venv", "*.egg-info"]
+extend-ignore = [
+    "E203",
+    "W503",
+    "E501",
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+    "D200",
+    "D201",
+    "D202",
+    "D205",
+    "D208",
+    "D209",
+    "D210",
+    "D211",
+    "D212",
+    "D213",
+    "D214",
+    "D215",
+    "D300",
+    "D301",
+    "D400",
+    "D401",
+    "D402",
+    "D403",
+    "D404",
+    "D405",
+    "D406",
+    "D407",
+    "D408",
+    "D409",
+    "D410",
+    "D411",
+    "D412",
+    "D413",
+    "D414",
+    "D415",
+    "D416",
+    "D417",
+]
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".venv",
+    "*.egg-info",
+]
 per-file-ignores = [
     "__init__.py:F401",
     "test_*.py:F401,F811",
